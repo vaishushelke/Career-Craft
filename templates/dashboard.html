@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-0 bg-dark bg-opacity-50 text-white rounded-4 overflow-hidden">
+                <div class="card-body text-center py-5">
+                    <div class="position-relative d-inline-block mb-3">
+                        <img src="https://ui-avatars.com/api/?name={{ profile.name or 'User' }}&background=06b6d4&color=fff&size=128" class="rounded-circle shadow-lg border border-3 border-primary" width="100">
+                    </div>
+                    <h4 class="fw-bold mb-1">{{ profile.name or 'Your Name' }}</h4>
+                    <p class="text-light opacity-50 small">Manage your professional identity and build your structured career profile.</p>
+                </div>
+                <div class="list-group list-group-flush border-top border-light border-opacity-10">
+                    <a href="{{ url_for('dashboard') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 active-nav-item">
+                        <i class="bi bi-person-fill me-2 text-primary"></i> Profile Information
+                    </a>
+                    <a href="{{ url_for('builder_education') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light">
+                        <i class="bi bi-mortarboard-fill me-2 text-primary"></i> Education History
+                    </a>
+                    <a href="{{ url_for('builder_experience') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light">
+                        <i class="bi bi-briefcase-fill me-2 text-primary"></i> Work Experience
+                    </a>
+                    <a href="{{ url_for('builder_skills') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light">
+                        <i class="bi bi-tools me-2 text-primary"></i> Skills & Expertise
+                    </a>
+                    <a href="{{ url_for('builder_awards') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light">
+                        <i class="bi bi-trophy-fill me-2 text-primary"></i> Awards & Settings
+                    </a>
+                    <a href="{{ url_for('portfolio') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light" target="_blank">
+                        <i class="bi bi-globe me-2 text-primary"></i> Live Portfolio
+                    </a>
+                    <a href="{{ url_for('resume') }}" class="list-group-item list-group-item-action bg-transparent text-white py-3 border-0 hover-bg-light">
+                        <i class="bi bi-file-earmark-pdf-fill me-2 text-primary"></i> View Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 bg-dark bg-opacity-25 text-white rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="p-2 bg-primary bg-opacity-10 rounded-3 me-3">
+                            <i class="bi bi-person-lines-fill text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-0 fw-bold">User Information</h4>
+                    </div>
+                    
+                    <form action="{{ url_for('dashboard') }}" method="POST">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label text-light opacity-75 small">Full Name</label>
+                                <input type="text" class="form-control glass-input" name="name" value="{{ profile.name or '' }}" placeholder="John Doe">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-light opacity-75 small">Phone Number 1 (+91...)</label>
+                                <input type="text" class="form-control glass-input" name="phone" value="{{ profile.phone or '' }}" placeholder="+91-1234567890">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-light opacity-75 small">Phone Number 2 (+91...)</label>
+                                <input type="text" class="form-control glass-input" name="phone2" value="{{ profile.phone2 or '' }}" placeholder="+91-0987654321">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-light opacity-75 small">Email Address</label>
+                                <input type="email" class="form-control glass-input" name="email" value="{{ profile.email or '' }}" placeholder="john@example.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-light opacity-75 small">Location</label>
+                                <input type="text" class="form-control glass-input" name="address" value="{{ profile.address or '' }}" placeholder="New York, USA">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-light opacity-75 small">Professional Summary</label>
+                                <textarea class="form-control glass-input" name="summary" rows="4" placeholder="Briefly describe your professional background and goals...">{{ profile.summary or '' }}</textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-light opacity-75 small">LinkedIn</label>
+                                <input type="url" class="form-control glass-input" name="linkedin_url" value="{{ profile.linkedin_url or '' }}" placeholder="LinkedIn URL">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-light opacity-75 small">GitHub</label>
+                                <input type="url" class="form-control glass-input" name="github_url" value="{{ profile.github_url or '' }}" placeholder="GitHub URL">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-light opacity-75 small">Portfolio</label>
+                                <input type="url" class="form-control glass-input" name="portfolio_url" value="{{ profile.portfolio_url or '' }}" placeholder="Portfolio URL">
+                            </div>
+                            <!-- Styling Section -->
+                            <div class="col-12 mt-4">
+                                <hr class="border-light border-opacity-10">
+                                <h5 class="text-primary mb-3"><i class="bi bi-palette me-2"></i> Customization & Branding</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-light opacity-75 small">Theme Color</label>
+                                <input type="color" class="form-control form-control-color w-100 bg-transparent border-0" name="theme_color" value="{{ profile.theme_color or '#06b6d4' }}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-light opacity-75 small">Title Size</label>
+                                <select class="form-select glass-input" name="title_font_size">
+                                    <option value="20px" {% if profile.title_font_size == '20px' %}selected{% endif %}>Small</option>
+                                    <option value="24px" {% if profile.title_font_size == '24px' or not profile.title_font_size %}selected{% endif %}>Medium</option>
+                                    <option value="32px" {% if profile.title_font_size == '32px' %}selected{% endif %}>Large</option>
+                                    <option value="40px" {% if profile.title_font_size == '40px' %}selected{% endif %}>XL</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-light opacity-75 small">Subtitle Size</label>
+                                <select class="form-select glass-input" name="subtitle_font_size">
+                                    <option value="14px" {% if profile.subtitle_font_size == '14px' %}selected{% endif %}>Small</option>
+                                    <option value="18px" {% if profile.subtitle_font_size == '18px' or not profile.subtitle_font_size %}selected{% endif %}>Medium</option>
+                                    <option value="22px" {% if profile.subtitle_font_size == '22px' %}selected{% endif %}>Large</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-light opacity-75 small">Text Size</label>
+                                <select class="form-select glass-input" name="text_font_size">
+                                    <option value="12px" {% if profile.text_font_size == '12px' %}selected{% endif %}>Small</option>
+                                    <option value="14px" {% if profile.text_font_size == '14px' or not profile.text_font_size %}selected{% endif %}>Medium</option>
+                                    <option value="16px" {% if profile.text_font_size == '16px' %}selected{% endif %}>Large</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-end mt-5">
+                            <button type="submit" class="btn btn-glow px-5 rounded-pill">Save Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 mb-4 sticky-top" style="top: 100px;">
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush rounded-3">
+                        <a href="{{ url_for('builder_profile') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'builder_profile' %}active{% endif %} p-3">
+                            <i class="bi bi-person me-2"></i> Basic Profile
+                        </a>
+                        <a href="{{ url_for('builder_education') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'builder_education' %}active{% endif %} p-3">
+                            <i class="bi bi-book me-2"></i> Education
+                        </a>
+                        <a href="{{ url_for('builder_experience') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'builder_experience' %}active{% endif %} p-3">
+                            <i class="bi bi-briefcase me-2"></i> Experience
+                        </a>
+                        <a href="{{ url_for('builder_skills') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'builder_skills' %}active{% endif %} p-3">
+                            <i class="bi bi-tools me-2"></i> Skills
+                        </a>
+                        <a href="{{ url_for('builder_awards') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'builder_awards' %}active{% endif %} p-3">
+                            <i class="bi bi-trophy me-2"></i> Awards
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <a href="{{ url_for('resume') }}" class="btn btn-glow rounded-pill shadow-sm">
+                    <i class="bi bi-eye me-1"></i> Preview Resume
+                </a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card shadow-sm border-0 builder-card">
+                <div class="card-body p-4 p-md-5">
+                    {% block builder_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .builder-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+    }
+    .list-group-item {
+        background: transparent !important;
+        color: var(--text-muted);
+        border: none !important;
+        transition: all 0.2s ease;
+    }
+    .list-group-item.active {
+        background: rgba(99, 102, 241, 0.1) !important;
+        color: var(--primary-color) !important;
+        font-weight: 600;
+        border-right: 3px solid var(--primary-color) !important;
+    }
+    .list-group-item:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: white;
+    }
+    input, textarea {
+        background: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border-radius: 12px !important;
+        padding: 12px !important;
+    }
+    input:focus, textarea:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 0.25rem var(--primary-glow) !important;
+    }
+    label {
+        color: #e2e8f0;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+</style>
+{% endblock %}

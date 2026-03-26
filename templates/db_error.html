@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow-lg border-0 auth-card p-5">
+                <div class="display-1 text-danger mb-4"><i class="bi bi-database-exclamation"></i></div>
+                <h2 class="text-white fw-bold mb-3">Database Connection Error</h2>
+                <p class="text-light opacity-75 fs-5 mb-4">{{ error }}</p>
+                
+                <div class="bg-dark bg-opacity-50 p-4 rounded-4 text-start mb-4">
+                    <h5 class="text-primary fw-bold mb-3">How to fix this:</h5>
+                    <ol class="text-light opacity-75">
+                        <li class="mb-2">Open <b>XAMPP Control Panel</b> or your <b>MySQL</b> manager.</li>
+                        <li class="mb-2">Click <b>Start</b> next to the MySQL module.</li>
+                        <li class="mb-2">Ensure the database <code>careercraft</code> is created.</li>
+                        <li>Refresh this page.</li>
+                    </ol>
+                </div>
+                
+                <a href="/" class="btn btn-glow rounded-pill px-5 py-3">Try Again</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-card {
+        background: rgba(30, 41, 59, 0.6) !important;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 24px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="hero-wrapper pt-5 mt-5">
+        <div class="container hero-section text-center">
+            <div class="badge-pill mb-4 border border-primary border-opacity-25 bg-primary bg-opacity-10 text-primary">
+                <i class="bi bi-stars me-2"></i> Next-Gen AI Career Platform
+            </div>
+            <h1 class="display-3 fw-bold mb-3">
+                Craft Your Career with <br>
+                <span class="text-gradient">Precision & Intelligence</span>
+            </h1>
+            <p class="hero-subtitle mb-5 fs-5 opacity-75">
+                Build professional resumes with structured LinkedIn-style entries and get AI-driven career recommendations instantly.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-glow btn-lg rounded-pill px-5 py-3 shadow-lg">
+                    Start Building Your Resume <i class="bi bi-rocket ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- How It Works Section -->
+<div class="container py-5 mt-5 how-it-works" id="how-to-use">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold section-title">How to Use CareerCraft</h2>
+        <p class="text-gradient fs-5 fw-bold text-center">Four simple steps to accelerate your career growth.</p>
+    </div>
+    
+    <div class="row g-4 mt-2">
+        <!-- Step 1 -->
+        <div class="col-md-3">
+            <div class="card h-100 step-card border-0 text-center p-4">
+                <div class="icon-box mx-auto mb-4 shadow-sm border-primary border-opacity-50">
+                    <i class="bi bi-person-badge text-primary fs-3"></i>
+                </div>
+                <h4 class="fw-bold mb-3 text-white">Define Profile</h4>
+                <p class="text-light opacity-50 small">Fill out your education, skills, and past experiences with a LinkedIn-style interface.</p>
+            </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="col-md-3">
+            <div class="card h-100 step-card border-0 text-center p-4">
+                <div class="icon-box mx-auto mb-4 shadow-sm border-info border-opacity-50">
+                    <i class="bi bi-magic text-info fs-3"></i>
+                </div>
+                <h4 class="fw-bold mb-3 text-white">AI Recommendations</h4>
+                <p class="text-light opacity-50 small">Our machine learning models provide personalized career roadmaps and role recommendations.</p>
+            </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="col-md-3">
+            <div class="card h-100 step-card border-0 text-center p-4">
+                <div class="icon-box mx-auto mb-4 shadow-sm border-warning border-opacity-50">
+                    <i class="bi bi-layout-text-window-reverse text-warning fs-3"></i>
+                </div>
+                <h4 class="fw-bold mb-3 text-white">Build Your Resume</h4>
+                <p class="text-light opacity-50 small">Choose from 10 ATS-friendly modern templates. Customize your fonts, sizing, and styling.</p>
+            </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="col-md-3">
+            <div class="card h-100 step-card border-0 text-center p-4">
+                <div class="icon-box mx-auto mb-4 shadow-sm border-success border-opacity-50">
+                    <i class="bi bi-cloud-arrow-down text-success fs-3"></i>
+                </div>
+                <h4 class="fw-bold mb-3 text-white">Export & Share</h4>
+                <p class="text-light opacity-50 small">Download your professional PDF resume instantly and share your live portfolio link with recruiters.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

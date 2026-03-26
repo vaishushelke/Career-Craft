@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    :root {
+        --user-theme-color: {{ user.theme_color or '#06b6d4' }};
+        --theme-bg-soft: {{ user.theme_color or '#06b6d4' }}22;
+    }
+    .theme-text { color: var(--user-theme-color) !important; }
+    .theme-border { border-color: var(--user-theme-color) !important; }
+    .theme-bg-soft { background-color: var(--theme-bg-soft) !important; }
+</style>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold text-white">Career <span class="theme-text">Roadmap</span></h2>
+        <p class="lead text-light opacity-50">Tailored for: <span class="fw-bold theme-text">{{ skills }}</span></p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 mb-5 bg-dark bg-opacity-25 text-white rounded-4 overflow-hidden">
+                <div class="card-header bg-dark bg-opacity-25 text-white text-center py-5 border-bottom border-light border-opacity-10">
+                    <div class="p-3 rounded-circle d-inline-block mb-3 theme-bg-soft">
+                        <i class="bi bi-robot fs-1 theme-text"></i>
+                    </div>
+                    <h5 class="mb-0 uppercase small fw-bold tracking-widest theme-text">Recommended Goal</h5>
+                    <h1 class="display-4 fw-bold mt-2 text-white">{{ career }}</h1>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <h4 class="fw-bold mb-4 border-start border-4 ps-3 theme-border">Learning Steps</h4>
+                    <div class="timeline mt-4">
+                        {% for step in steps %}
+                        <div class="card mb-4 bg-dark bg-opacity-50 border-light border-opacity-10 shadow-sm border-start border-4 theme-border">
+                            <div class="card-body py-3">
+                                <h6 class="mb-0 fw-semibold text-white">{{ step.strip() }}</h6>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-transparent border-0 pt-0 pb-5">
+                    <button onclick="window.print()" class="btn btn-glow rounded-pill px-5 py-2 fw-bold me-2">
+                        <i class="bi bi-download me-2"></i> Download PDF
+                    </button>
+                    <a href="{{ url_for('dashboard') }}" class="btn glass-btn rounded-pill px-4 py-2 fw-bold">
+                        Return to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

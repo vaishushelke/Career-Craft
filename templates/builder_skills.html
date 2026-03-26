@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 auth-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="text-white fw-bold m-0">Skills</h2>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">Step 4 of 5</span>
+                </div>
+                
+                <div class="mb-4 d-flex flex-wrap gap-2">
+                    {% if entries %}
+                        {% for entry in entries %}
+                        <div class="badge bg-dark border border-primary border-opacity-25 px-3 py-2 d-flex align-items-center">
+                            {{ entry.skill_name }}
+                            <a href="{{ url_for('delete_skill', id=entry.id) }}" class="ms-2 text-danger opacity-75"><i class="bi bi-x-circle-fill"></i></a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted small w-100">No skills added yet.</p>
+                    {% endif %}
+                </div>
+
+                <form method="POST">
+                    <div class="row g-2 mb-4">
+                        <div class="col-md-7">
+                            <input type="text" name="skill_name" class="form-control glass-input" placeholder="Add a skill (e.g. Python, Leadership)" required>
+                        </div>
+                        <div class="col-md-5">
+                            <select name="skill_level" class="form-select glass-input">
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate" selected>Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Expert">Expert</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button class="btn btn-glow w-100 py-3" type="submit"><i class="bi bi-plus-lg me-2"></i> Add Skill</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 text-center">
+                        <a href="{{ url_for('builder_awards') }}" class="btn btn-glow rounded-pill px-5">
+                            Finalize Resume <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

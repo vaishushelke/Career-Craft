@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 auth-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="text-white fw-bold m-0">Education</h2>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">Step 2 of 4</span>
+                </div>
+                
+                <!-- List of existing entries -->
+                <div class="mb-5">
+                    <h5 class="text-light opacity-75 mb-3">Saved Education</h5>
+                    {% if entries %}
+                        {% for entry in entries %}
+                        <div class="bg-dark bg-opacity-50 p-3 rounded-3 mb-2 d-flex justify-content-between align-items-center border border-light border-opacity-10">
+                            <div>
+                                <div class="fw-bold text-white">{{ entry.degree }}</div>
+                                <div class="small text-primary">{{ entry.institution }} | {{ entry.years }}</div>
+                            </div>
+                            <a href="{{ url_for('delete_education', id=entry.id) }}" class="btn btn-sm btn-outline-danger border-0">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted small">No education entries added yet.</p>
+                    {% endif %}
+                </div>
+
+                <hr class="border-light opacity-10 mb-5">
+
+                <!-- Form to add new -->
+                <h5 class="text-white mb-4">Add New Education</h5>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label text-light opacity-75 small uppercase fw-bold">Degree / Certification</label>
+                        <input type="text" name="degree" class="form-control glass-input" placeholder="e.g. B.Tech in Computer Science" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-light opacity-75 small uppercase fw-bold">School / University / Platform</label>
+                        <input type="text" name="institution" class="form-control glass-input" placeholder="e.g. Stanford University" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-light opacity-75 small uppercase fw-bold">Years / Duration</label>
+                        <input type="text" name="years" class="form-control glass-input" placeholder="e.g. 2019 - 2023" required>
+                    </div>
+                    
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn glass-btn rounded-pill px-4 flex-grow-1">
+                            <i class="bi bi-plus-lg me-2"></i> Add Entry
+                        </button>
+                        <a href="{{ url_for('builder_experience') }}" class="btn btn-glow rounded-pill px-5 flex-grow-1">
+                            Next Stage <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

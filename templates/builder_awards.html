@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 auth-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="text-white fw-bold m-0">Finalize</h2>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">Step 5 of 5</span>
+                </div>
+
+                <!-- Awards Section -->
+                <div class="mb-5">
+                    <h5 class="text-light opacity-75 mb-3">Honors & Awards</h5>
+                    <div class="mb-3 d-flex flex-wrap gap-2">
+                        {% if entries %}
+                            {% for entry in entries %}
+                            <div class="badge bg-dark border border-warning border-opacity-25 px-3 py-2 d-flex align-items-center">
+                                <i class="bi bi-trophy text-warning me-2"></i> {{ entry.title }}
+                                <a href="{{ url_for('delete_award', id=entry.id) }}" class="ms-2 text-danger opacity-75"><i class="bi bi-x-circle-fill"></i></a>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <form method="POST" class="row g-2 mb-4">
+                        <div class="col">
+                            <input type="text" name="title" class="form-control glass-input" placeholder="Add an award or recognition">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-glow px-4 h-100" type="submit">Add Award</button>
+                        </div>
+                    </form>
+                </div>
+
+                <hr class="border-light opacity-10 mb-5">
+
+                <!-- Resume Design Settings -->
+                <h5 class="text-white mb-4">Resume Style & Template</h5>
+                <form method="POST">
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-light opacity-75 small uppercase fw-bold">Primary Font Family</label>
+                            <select name="font_family" class="form-select glass-input">
+                                <option value="Inter" {% if profile.font_family == 'Inter' %}selected{% endif %}>Inter (Modern Sans)</option>
+                                <option value="Roboto" {% if profile.font_family == 'Roboto' %}selected{% endif %}>Roboto</option>
+                                <option value="Poppins" {% if profile.font_family == 'Poppins' %}selected{% endif %}>Poppins (Clean)</option>
+                                <option value="Montserrat" {% if profile.font_family == 'Montserrat' %}selected{% endif %}>Montserrat (Bold)</option>
+                                <option value="Open Sans" {% if profile.font_family == 'Open Sans' %}selected{% endif %}>Open Sans</option>
+                                <option value="Merriweather" {% if profile.font_family == 'Merriweather' %}selected{% endif %}>Merriweather (Classic Serif)</option>
+                                <option value="Playfair Display" {% if profile.font_family == 'Playfair Display' %}selected{% endif %}>Playfair Display</option>
+                                <option value="Lato" {% if profile.font_family == 'Lato' %}selected{% endif %}>Lato</option>
+                                <option value="Georgia" {% if profile.font_family == 'Georgia' %}selected{% endif %}>Georgia (Classic Serif)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-light opacity-75 small uppercase fw-bold">Base Font Size</label>
+                            <select name="font_size" class="form-select glass-input">
+                                <option value="10px" {% if profile.font_size == '10px' %}selected{% endif %}>10px (Very Compact)</option>
+                                <option value="12px" {% if profile.font_size == '12px' %}selected{% endif %}>12px (Compact)</option>
+                                <option value="14px" {% if profile.font_size == '14px' %}selected{% endif %}>14px (Standard)</option>
+                                <option value="16px" {% if profile.font_size == '16px' %}selected{% endif %}>16px (Large)</option>
+                                <option value="18px" {% if profile.font_size == '18px' %}selected{% endif %}>18px (XL Signature)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label text-light opacity-75 d-block mb-3">Select Design Template</label>
+                        <div class="row g-3">
+                            {% for i in range(1, 11) %}
+                            <div class="col-md-3">
+                                <div class="template-option p-2 rounded-3 border {% if profile.template_id == i %}border-primary bg-primary bg-opacity-10{% else %}border-light border-opacity-10{% endif %} text-center cursor-pointer">
+                                    <input type="radio" name="template_id" value="{{ i }}" id="t{{ i }}" class="d-none" {% if profile.template_id == i %}checked{% endif %}>
+                                    <label for="t{{ i }}" class="w-100 cursor-pointer">
+                                        <div class="small text-light opacity-75 mt-2">Template {{ i }}</div>
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-glow w-100 rounded-pill py-3">
+                        Generate Final Resume <i class="bi bi-file-earmark-pdf ms-2"></i>
+                    </button>
+                    <a href="{{ url_for('resume') }}" class="btn glass-btn w-100 rounded-pill py-3 mt-3">View Current Resume</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .cursor-pointer { cursor: pointer; }
+    .template-option:hover { border-color: var(--primary-color) !important; background: rgba(6, 182, 212, 0.05); }
+</style>
+{% endblock %}

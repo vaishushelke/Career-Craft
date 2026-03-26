@@ -1,0 +1,195 @@
+/* Custom Styles for CareerCraft */
+:root {
+    --primary-color: #06b6d4; /* Cyan 500 */
+    --primary-glow: rgba(6, 182, 212, 0.4);
+    --secondary-color: #3b82f6; /* Blue 500 */
+    --dark-bg: #020617; /* Slatier Dark */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top right, #083344, #020617 40%),
+                radial-gradient(circle at bottom left, #1e1b4b, #020617 40%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navbar Enhancements */
+.navbar {
+    background: rgba(2, 6, 23, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #22d3ee, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hero Section */
+.hero-wrapper {
+    position: relative;
+    padding: 120px 0 80px;
+    background: radial-gradient(circle at top, rgba(6,182,212,0.1), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(59,130,246,0.05), transparent 50%);
+    overflow: hidden;
+}
+.hero-section {
+    animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    z-index: 2;
+}
+.badge-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+.text-gradient {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.3px;
+}
+.btn-glow {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
+.btn-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    color: white;
+}
+.glass-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+}
+.glass-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* How It Works Cards */
+.section-title {
+    color: white;
+}
+.step-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+}
+.step-card:hover {
+    transform: translateY(-8px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.step-card h4 {
+    color: #e2e8f0;
+}
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #312e81, #1e1b4b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+.step-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a8b1ff, white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-card {
+    background: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* --- Dashboard & Input Polish --- */
+.glass-input {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    padding: 12px 18px !important;
+    transition: all 0.3s ease;
+}
+
+/* Specific styling for select dropdowns */
+select.glass-input option {
+    background-color: #0f172a;
+    color: white;
+}
+
+.glass-input:focus {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3) !important;
+    outline: none;
+}
+
+/* Label Enhancements */
+label.uppercase {
+    letter-spacing: 1px;
+    color: var(--primary-color) !important;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.active-nav-item {
+    background: rgba(6, 182, 212, 0.15) !important;
+    border-left: 4px solid var(--primary-color) !important;
+}
+
+.hover-bg-light:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.icon-box i {
+    filter: drop-shadow(0 0 8px currentColor);
+}

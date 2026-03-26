@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 auth-card">
+                <div class="card-body p-5">
+                    <h3 class="text-center mb-4 fw-bold text-white">Create an Account</h3>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} opacity-75">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form action="{{ url_for('register') }}" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label text-light opacity-75">Username</label>
+                            <input type="text" class="form-control auth-input" name="username" required placeholder="Pick a unique username">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-light opacity-75">Email Address</label>
+                            <input type="email" class="form-control auth-input" name="email" required placeholder="user@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-light opacity-75">Password</label>
+                            <input type="password" class="form-control auth-input" name="password" required placeholder="••••••••">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-light opacity-75">Confirm Password</label>
+                            <input type="password" class="form-control auth-input" name="confirm_password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn btn-glow w-100 rounded-pill mt-2 shadow py-3">Create Free Account</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="text-light opacity-75">Already have an account? <a href="{{ url_for('login') }}" class="text-decoration-none fw-bold text-gradient">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-card {
+        background: rgba(30, 41, 59, 0.6) !important;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 24px;
+    }
+    .auth-input {
+        background: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border-radius: 12px !important;
+        padding: 12px !important;
+    }
+    .auth-input:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 0.25rem var(--primary-glow) !important;
+    }
+</style>
+{% endblock %}

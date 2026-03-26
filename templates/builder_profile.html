@@ -1,0 +1,29 @@
+{% extends "builder_base.html" %}
+{% block builder_content %}
+<h3 class="fw-bold mb-4">Personal Profile</h3>
+<p class="text-muted mb-4">Let's start with your basic contact information.</p>
+
+<form action="{{ url_for('builder_profile') }}" method="POST">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" name="phone" value="{{ profile.phone if profile else '' }}" placeholder="+1 234 567 890">
+        </div>
+        <div class="col-md-12 mb-3">
+            <label class="form-label">LinkedIn URL</label>
+            <input type="url" class="form-control" name="linkedin_url" value="{{ profile.linkedin_url if profile else '' }}" placeholder="https://linkedin.com/in/username">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">GitHub URL</label>
+            <input type="url" class="form-control" name="github_url" value="{{ profile.github_url if profile else '' }}" placeholder="https://github.com/username">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Portfolio URL</label>
+            <input type="url" class="form-control" name="portfolio_url" value="{{ profile.portfolio_url if profile else '' }}" placeholder="https://yourportfolio.com">
+        </div>
+    </div>
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary px-5 rounded-pill shadow">Save & Next</button>
+    </div>
+</form>
+{% endblock %}
