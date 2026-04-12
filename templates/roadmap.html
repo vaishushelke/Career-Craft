@@ -26,6 +26,20 @@
                     <h1 class="display-4 fw-bold mt-2 text-white">{{ career }}</h1>
                 </div>
                 <div class="card-body p-4 p-md-5">
+                    {% if suggested_skills %}
+                    <div class="mb-5">
+                        <h4 class="fw-bold mb-4 border-start border-4 ps-3 theme-border">Skills to Acquire</h4>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for skill in suggested_skills %}
+                            <div class="badge bg-primary bg-opacity-10 border theme-border theme-text px-3 py-2 fs-6">
+                                <i class="bi bi-star-fill me-2 small"></i>{{ skill }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <p class="text-muted small mt-3"><i class="bi bi-info-circle me-1"></i> These skills are highly recommended for a successful career as a {{ career }}.</p>
+                    </div>
+                    {% endif %}
+
                     <h4 class="fw-bold mb-4 border-start border-4 ps-3 theme-border">Learning Steps</h4>
                     <div class="timeline mt-4">
                         {% for step in steps %}
